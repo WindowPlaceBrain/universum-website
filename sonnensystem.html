@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="galaxy-tabs">
+      <!-- unsichtbare Radio‑Buttons -->
+      <input type="radio" id="tab-spiral" name="gal-tab" checked />
+      <label for="tab-spiral">Spiral</label>
+
+      <input type="radio" id="tab-elliptical" name="gal-tab" />
+      <label for="tab-elliptical">Elliptisch</label>
+
+      <input type="radio" id="tab-irregular" name="gal-tab" />
+      <label for="tab-irregular">Irregulär</label>
+
+      <!-- Inhalte -->
+      <div class="tab-content" id="content-spiral">
+        <h3>Spiralgalaxien</h3>
+        <img src="spiral.jpg" alt="Spiralgalaxie" />
+        <p>Spiralgalaxien haben...</p>
+      </div>
+      <div class="tab-content" id="content-elliptical">
+        <h3>Elliptische Galaxien</h3>
+        <img src="elliptical.jpg" alt="Elliptische Galaxie" />
+        <p>Elliptische Galaxien zeichnen sich aus durch...</p>
+      </div>
+      <div class="tab-content" id="content-irregular">
+        <h3>Irreguläre Galaxien</h3>
+        <img src="irregular.jpg" alt="Irreguläre Galaxie" />
+        <p>Irreguläre Galaxien haben keine klare Form...</p>
+      </div>
+    </section>
+    <style>
+      .galaxy-tabs {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      /* Labels als Tabs */
+      .galaxy-tabs > label {
+        cursor: pointer;
+        padding: .5rem 1rem;
+        background: #0d1b2a;
+        color: #fff;
+        display: inline-block;
+        margin-right: .5rem;
+      }
+      input[name="gal-tab"] { display: none; }
+
+      /* Inhalte standardmäßig verstecken */
+      .tab-content { display: none; }
+
+      /* Sichtbarkeit je nach aktivem Radio-Button steuern */
+      #tab-spiral:checked ~ #content-spiral,
+      #tab-elliptical:checked ~ #content-elliptical,
+      #tab-irregular:checked ~ #content-irregular {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+  </body>
+</html>

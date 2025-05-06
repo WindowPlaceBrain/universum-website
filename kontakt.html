@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakt</title>
+
+    <style>
+      body {
+        background-color: #1a1a2e; /* Dunkler Hintergrund */
+        color: #ffffff; /* Weißer Text */
+        font-family: Arial, sans-serif; /* Standard Schriftart */
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar {
+        background-color: #16213e; /* Dunklerer Farbton für die Navigation */
+        padding: 1rem;
+      }
+
+      .nav-links a {
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 1rem;
+      }
+
+      .nav-links a:hover {
+        color: #00aaff; /* Heller Farbton beim Hover */
+      }
+      .logo {
+        font: 1022;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">🛸 Kontakt</div>
+        <ul class="nav-links">
+          <li><a href="index.html">Startseite</a></li>
+          <!--Infos über Planeten-->
+          <li><a href="sonnensystem.html">Sonnensystem</a></li>
+          <!--Infos über Planeten-->
+          <li><a href="sterne.html">Sterne</a></li>
+          <!--Sterne, Supernova, etc.-->
+          <li><a href="galaxien.html">Galaxien</a></li>
+          <!--Milchstraße und andere-->
+          <li><a href="apod.html">Bild des Tages</a></li>
+          <!--NASA "Astronomy Picture" per API-->
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <!--Kontaktformular-->
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div>
+        <section>
+          <h1>Kontakt</h1>
+          <p>Sie können mich über die folgenden Wege erreichen:</p>
+          <ul>
+            <li><a href="mailto:beispiel@email.com">E-Mail senden</a></li>
+            <li><a href="tel:+4131321234">Anrufen: 041 132 1234</a></li>
+          </ul>
+        </section>
+        <section>
+          <form id="contact-form">
+            <fieldset>
+              <legend>Kontaktformular</legend>
+              <table>
+                <tr>
+                  <td><label for="name">Name (Pflichtfeld):</label></td>
+                  <td>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="Ihr vollständiger Name"
+                      required
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="email">E-Mail (Pflichtfeld):</label></td>
+                  <td>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="Ihre E-Mail-Adresse"
+                      required
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="subject">Betreff:</label></td>
+                  <td>
+                    <select id="subject" name="subject">
+                      <option value="frage">Frage</option>
+                      <option value="feedback">Feedback</option>
+                      <option value="zusammenarbeit">Zusammenarbeit</option>
+                      <option value="sonstiges">Sonstiges</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="message">Nachricht (Pflichtfeld):</label></td>
+                  <td>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="5"
+                      cols="40"
+                      placeholder="Ihre Nachricht hier eingeben"
+                      required
+                    ></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <label>
+                      <input
+                        type="checkbox"
+                        id="privacy"
+                        name="privacy"
+                        required
+                      />
+                      Ich stimme der Datenschutzerklärung zu (Pflichtfeld)
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="text-align: center">
+                    <button type="submit">Nachricht senden</button>
+                  </td>
+                </tr>
+              </table>
+            </fieldset>
+          </form>
+        </section>
+
+        <script
+          type="text/javascript"
+          src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+        ></script>
+        <script>
+          (function () {
+            emailjs.init("9kfQFaNnA14waBRbR"); // Ersetzen Sie "YOUR_USER_ID" durch Ihre EmailJS-Benutzer-ID
+          })();
+
+          document
+            .getElementById("contact-form")
+            .addEventListener("submit", function (event) {
+              event.preventDefault();
+
+              emailjs.sendForm("mein-blog", "template_2o39xom", this).then(
+                function () {
+                  alert("Nachricht erfolgreich gesendet!");
+                },
+                function (error) {
+                  alert("Fehler beim Senden der Nachricht: " + error.text);
+                }
+              );
+            });
+        </script>
+      </div>
+    </main>
+
+    <footer>
+      <nav aria-label="breadcrumb">
+        <ol style="list-style: none; display: flex; padding: 0; margin: 0">
+          <li style="margin-right: 0.5rem">
+            <a href="index.html" style="color: #00aaff; text-decoration: none"
+              >Startseite</a
+            >
+          </li>
+          <li style="margin-right: 0.5rem">/</li>
+          <li style="color: #ffffff">Kontakt</li>
+        </ol>
+      </nav>
+    </footer>
+  </body>
+</html>
