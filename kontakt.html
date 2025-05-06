@@ -31,25 +31,65 @@
       .logo {
         font: 1022;
       }
+      .logo:hover {
+        color: #0dfd00; /* Heller Farbton beim Hover */
+        transition: transform 0.3s ease, color 0.3s ease, filter 0.3s ease; /* Sanfte Übergänge */
+        filter: blur(2px); /* Text verschwimmt beim Hover */
+      }
+
+      .logo-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .hover-text {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 100%;
+        transform: translateX(-50%);
+        background-color: #16213e;
+        color: #29b345;
+        padding: 3.8rem;
+        border-radius: 5px;
+        white-space: nowrap;
+        font-size: 0.9rem;
+      }
+
+      .logo-container:hover .hover-text {
+        display: block;
+      }
     </style>
   </head>
   <body>
     <header>
+      <nav aria-label="breadcrumb">
+        <ol style="list-style: none; display: flex; padding: 0; margin: 0">
+          <li style="margin-right: 0.5rem">
+            <a href="index.html" style="color: #00aaff; text-decoration: none"
+              >Startseite</a
+            >
+          </li>
+          <li style="margin-right: 0.5rem">/</li>
+          <li style="color: #ffffff">Kontakt</li>
+        </ol>
+      </nav>
       <nav class="navbar">
-        <div class="logo">🛸 Kontakt</div>
+        <div class="logo-container">
+          <div class="logo" style="cursor: pointer">🛸 Kontaktaufnahme</div>
+          <div class="hover-text">👽Sie haben mich gefunden!👽</div>
+        </div>
         <ul class="nav-links">
           <li><a href="index.html">Startseite</a></li>
-          <!--Infos über Planeten-->
+          <!--Startseite-->
           <li><a href="sonnensystem.html">Sonnensystem</a></li>
-          <!--Infos über Planeten-->
+          <!--Infos über das Sonnensystem-->
           <li><a href="sterne.html">Sterne</a></li>
-          <!--Sterne, Supernova, etc.-->
-          <li><a href="galaxien.html">Galaxien</a></li>
-          <!--Milchstraße und andere-->
+          <!--Die verschiedenen Stadien, welche ein Stern durchläuft-->
           <li><a href="apod.html">Bild des Tages</a></li>
           <!--NASA "Astronomy Picture" per API-->
           <li><a href="kontakt.html">Kontakt</a></li>
-          <!--Kontaktformular-->
+          <!--Kontaktseite für Fragen an den "Astro-Klub"-->
         </ul>
       </nav>
     </header>
@@ -139,14 +179,13 @@
             </fieldset>
           </form>
         </section>
-
         <script
           type="text/javascript"
           src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
         ></script>
         <script>
           (function () {
-            emailjs.init("9kfQFaNnA14waBRbR"); // Ersetzen Sie "YOUR_USER_ID" durch Ihre EmailJS-Benutzer-ID
+            emailjs.init("9kfQFaNnA14waBRbR");
           })();
 
           document
@@ -166,19 +205,6 @@
         </script>
       </div>
     </main>
-
-    <footer>
-      <nav aria-label="breadcrumb">
-        <ol style="list-style: none; display: flex; padding: 0; margin: 0">
-          <li style="margin-right: 0.5rem">
-            <a href="index.html" style="color: #00aaff; text-decoration: none"
-              >Startseite</a
-            >
-          </li>
-          <li style="margin-right: 0.5rem">/</li>
-          <li style="color: #ffffff">Kontakt</li>
-        </ol>
-      </nav>
-    </footer>
+    <footer></footer>
   </body>
 </html>

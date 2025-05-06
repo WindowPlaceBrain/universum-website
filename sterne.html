@@ -1,11 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      body {
+        background-color: #1a1a2e; /* Dunkler Hintergrund */
+        color: #ffffff; /* Weißer Text */
+        font-family: Arial, sans-serif; /* Standard Schriftart */
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar {
+        background-color: #16213e; /* Dunklerer Farbton für die Navigation */
+        padding: 1rem;
+      }
+
+      .nav-links a {
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 1rem;
+      }
+
+      .nav-links a:hover {
+        color: #00aaff; /* Heller Farbton beim Hover */
+      }
+    </style>
   </head>
+
   <body>
+    <header>
+      <nav aria-label="breadcrumb">
+        <ol style="list-style: none; display: flex; padding: 0; margin: 0">
+          <li style="margin-right: 0.5rem">
+            <a href="index.html" style="color: #00aaff; text-decoration: none"
+              >Startseite</a
+            >
+          </li>
+          <li style="margin-right: 0.5rem">/</li>
+          <li style="color: #ffffff">Sterne</li>
+        </ol>
+      </nav>
+      <nav class="navbar">
+        <div class="logo">&#x1F31E; Das Leben eines Sternes </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Startseite</a></li>
+          <!--Startseite-->
+          <li><a href="sonnensystem.html">Sonnensystem</a></li>
+          <!--Infos über das Sonnensystem-->
+          <li><a href="sterne.html">Sterne</a></li>
+          <!--Die verschiedenen Stadien, welche ein Stern durchläuft-->
+          <li><a href="apod.html">Bild des Tages</a></li>
+          <!--NASA "Astronomy Picture" per API-->
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <!--Kontaktseite für Fragen an den "Astro-Klub"-->
+        </ul>
+      </nav>
+    </header>
+
     <section class="galaxy-tabs">
       <!-- unsichtbare Radio‑Buttons -->
       <input type="radio" id="tab-spiral" name="gal-tab" checked />
@@ -34,6 +88,7 @@
         <p>Irreguläre Galaxien haben keine klare Form...</p>
       </div>
     </section>
+
     <style>
       .galaxy-tabs {
         display: flex;
@@ -44,16 +99,20 @@
       /* Labels als Tabs */
       .galaxy-tabs > label {
         cursor: pointer;
-        padding: .5rem 1rem;
+        padding: 0.5rem 1rem;
         background: #0d1b2a;
         color: #fff;
         display: inline-block;
-        margin-right: .5rem;
+        margin-right: 0.5rem;
       }
-      input[name="gal-tab"] { display: none; }
+      input[name="gal-tab"] {
+        display: none;
+      }
 
       /* Inhalte standardmäßig verstecken */
-      .tab-content { display: none; }
+      .tab-content {
+        display: none;
+      }
 
       /* Sichtbarkeit je nach aktivem Radio-Button steuern */
       #tab-spiral:checked ~ #content-spiral,
@@ -62,7 +121,5 @@
         display: block;
       }
     </style>
-  </head>
-  <body>
   </body>
 </html>
