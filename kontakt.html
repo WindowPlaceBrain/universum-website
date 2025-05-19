@@ -4,62 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kontakt</title>
+    <link rel="stylesheet" href="styles.css" />
 
-    <style>
-      body {
-        background-color: #1a1a2e; /* Dunkler Hintergrund */
-        color: #ffffff; /* Weißer Text */
-        font-family: Arial, sans-serif; /* Standard Schriftart */
-        margin: 0;
-        padding: 0;
-      }
-
-      .navbar {
-        background-color: #16213e; /* Dunklerer Farbton für die Navigation */
-        padding: 1rem;
-      }
-
-      .nav-links a {
-        color: #ffffff;
-        text-decoration: none;
-        margin: 0 1rem;
-      }
-
-      .nav-links a:hover {
-        color: #00aaff; /* Heller Farbton beim Hover */
-      }
-      .logo {
-        font: 1022;
-      }
-      .logo:hover {
-        color: #0dfd00; /* Heller Farbton beim Hover */
-        transition: transform 0.3s ease, color 0.3s ease, filter 0.3s ease; /* Sanfte Übergänge */
-        filter: blur(2px); /* Text verschwimmt beim Hover */
-      }
-
-      .logo-container {
-        position: relative;
-        display: inline-block;
-      }
-
-      .hover-text {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 100%;
-        transform: translateX(-50%);
-        background-color: #16213e;
-        color: #29b345;
-        padding: 3.8rem;
-        border-radius: 5px;
-        white-space: nowrap;
-        font-size: 0.9rem;
-      }
-
-      .logo-container:hover .hover-text {
-        display: block;
-      }
-    </style>
+    
   </head>
   <body>
     <header>
@@ -76,7 +23,7 @@
       </nav>
       <nav class="navbar">
         <div class="logo-container">
-          <div class="logo" style="cursor: pointer">🛸 Kontaktaufnahme</div>
+          <div id="alien" class="logo" style="cursor: pointer">🛸 Kontaktaufnahme</div>
           <div class="hover-text">👽Sie haben mich gefunden!👽</div>
         </div>
         <ul class="nav-links">

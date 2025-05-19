@@ -4,42 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>APOD</title>
-    <style>
-      body {
-        background-color: #1a1a2e; /* Dunkler Hintergrund */
-        color: #ffffff; /* Weißer Text */
-        font-family: Arial, sans-serif; /* Standard Schriftart */
-        margin: 0;
-        padding: 0;
-      }
-
-      .navbar {
-        background-color: #16213e; /* Dunklerer Farbton für die Navigation */
-        padding: 1rem;
-      }
-
-      .nav-links a {
-        color: #ffffff;
-        text-decoration: none;
-        margin: 0 1rem;
-      }
-
-      .nav-links a:hover {
-        color: #00aaff; /* Heller Farbton beim Hover */
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
   </head>
+  
   <body>
     <header>
-      <nav aria-label="breadcrumb">
-        <ol style="list-style: none; display: flex; padding: 0; margin: 0">
-          <li style="margin-right: 0.5rem">
-            <a href="index.html" style="color: #00aaff; text-decoration: none"
-              >Startseite</a
-            >
-          </li>
-          <li style="margin-right: 0.5rem">/</li>
-          <li style="color: #ffffff">APOD</li>
+      <nav class="breadcrumb-nav" aria-label="breadcrumb">
+        <ol>
+            <li><a href="index.html">Startseite</a></li>
+            <li>/</li>
+            <li>APOD</li>
         </ol>
       </nav>
       <nav class="navbar">
@@ -47,18 +21,174 @@
       </nav>
     </header>
     <main>
-      <!--API here-->
+      <div class="apod-container">
+        <h2 class="apod-title" id="title"></h2>
+        <div id="media-container"></div>
+        <p class="apod-description" id="explanation"></p>
+      </div>
     </main>
     <footer>
       <nav aria-label="breadcrumb">
-        <ol style="list-style: none; display: flex; padding: 0; margin: 0">
+        <ol
+          style="
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+          "
+        >
           <li style="margin-right: 0.5rem">
             <a href="index.html" style="color: #00aaff; text-decoration: none"
               >Zurück zur Startseite</a
             >
           </li>
+          <li style="margin: 0 1rem; color: #ffffff">oder</li>
+          <li>
+            <a
+              href="https://apod.nasa.gov/apod/archivepix.html"
+              style="color: #00aaff; text-decoration: none"
+              >Vergangene ADOP</a
+            >
+          </li>
         </ol>
       </nav>
     </footer>
+    <script>
+      async function fetchAPOD() {
+        try {
+          // Fetch and clean the API key from apikey.txt
+          const apiKey = await fetch("apikey.txt")
+            .then((response) => response.text())
+            .then((text) => text.trim());
+
+          if (!apiKey) {
+            throw new Error("API key not found");
+          }
+
+          // Add loading state
+          document.getElementById("media-container").innerHTML =
+            "<p>Loading NASA Picture of the Day...</p>";
+
+          // Fetch APOD data
+          const response = await fetch(
+            `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
+          );
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          // Update the page with the fetched data
+          document.getElementById("title").textContent = data.title;
+
+          // Handle different media types
+          if (data.media_type === "video") {
+            let videoUrl = data.url;
+            
+            // Handle relative paths from NASA
+            if (videoUrl.startsWith('image/') || videoUrl.startsWith('/image/')) {
+                videoUrl = `https://apod.nasa.gov/apod/${videoUrl}`;
+            }
+            // Handle YouTube URLs
+            else if (videoUrl.includes('youtube.com')) {
+                videoUrl = videoUrl.replace('watch?v=', 'embed/');
+                // Use iframe for YouTube videos
+                document.getElementById("media-container").innerHTML = `
+                    <iframe
+                        class="apod-video"
+                        src="${videoUrl}"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>`;
+            } else {
+                // Use video element for direct video files
+                document.getElementById("media-container").innerHTML = `
+                    <video controls class="apod-video">
+                        <source src="${videoUrl}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>`;
+            }
+          } else {
+            document.getElementById("media-container").innerHTML = `
+                <img
+                    class="apod-image"
+                    src="${data.url}"
+                    alt="${data.title}"
+                    loading="lazy">`;
+          }
+
+          document.getElementById("explanation").textContent = data.explanation;
+        } catch (error) {
+          console.error("Error:", error);
+          // Update error message styling
+          document.getElementById("media-container").innerHTML =
+            '<p class="error-message">Error loading NASA Picture of the Day</p>';
+        }
+      }
+
+      async function checkApiLimits() {
+        try {
+          const apiKey = await fetch("apikey.txt")
+            .then((response) => response.text())
+            .then((text) => text.trim());
+
+          // Make a request to APOD endpoint to check headers
+          const response = await fetch(
+            `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
+          );
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          // Get rate limit info from headers
+          const rateLimit = {
+            limit: response.headers.get("X-RateLimit-Limit"),
+            remaining: response.headers.get("X-RateLimit-Remaining"),
+          };
+
+          // Add visual feedback on the page
+          const limitInfo = document.createElement("div");
+          limitInfo.style.cssText =
+            "background: #16213e; padding: 1rem; margin-top: 1rem; border-radius: 5px;";
+          limitInfo.innerHTML = `
+            <h3 style="color: #00aaff; margin: 0 0 0.5rem 0;">API Nutzung</h3>
+            <p style="margin: 0.2rem 0;">Verbleibende Aufrufe: ${rateLimit.remaining}</p>
+            <p style="margin: 0.2rem 0;">Gesamtlimit: ${rateLimit.limit}</p>
+          `;
+
+          document.querySelector(".apod-container").appendChild(limitInfo);
+
+          // Create discrete counter
+          const counter = document.createElement("div");
+          counter.className = "api-counter";
+          counter.innerHTML = `${rateLimit.remaining}`; // Just show the remaining calls
+
+          // Remove existing counter if present
+          const existingCounter = document.querySelector(".api-counter");
+          if (existingCounter) {
+            existingCounter.remove();
+          }
+
+          // Add to document
+          document.body.appendChild(counter);
+
+          // Log to console for debugging
+          console.log("API Rate Limits:", rateLimit);
+        } catch (error) {
+          console.error("Error checking API limits:", error);
+        }
+      }
+
+      // Check limits when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        fetchAPOD();
+        checkApiLimits();
+      });
+    </script>
   </body>
 </html>

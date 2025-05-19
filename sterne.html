@@ -4,30 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      body {
-        background-color: #1a1a2e; /* Dunkler Hintergrund */
-        color: #ffffff; /* Weißer Text */
-        font-family: Arial, sans-serif; /* Standard Schriftart */
-        margin: 0;
-        padding: 0;
-      }
-
-      .navbar {
-        background-color: #16213e; /* Dunklerer Farbton für die Navigation */
-        padding: 1rem;
-      }
-
-      .nav-links a {
-        color: #ffffff;
-        text-decoration: none;
-        margin: 0 1rem;
-      }
-
-      .nav-links a:hover {
-        color: #00aaff; /* Heller Farbton beim Hover */
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
@@ -88,38 +65,5 @@
         <p>Irreguläre Galaxien haben keine klare Form...</p>
       </div>
     </section>
-
-    <style>
-      .galaxy-tabs {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      /* Labels als Tabs */
-      .galaxy-tabs > label {
-        cursor: pointer;
-        padding: 0.5rem 1rem;
-        background: #0d1b2a;
-        color: #fff;
-        display: inline-block;
-        margin-right: 0.5rem;
-      }
-      input[name="gal-tab"] {
-        display: none;
-      }
-
-      /* Inhalte standardmäßig verstecken */
-      .tab-content {
-        display: none;
-      }
-
-      /* Sichtbarkeit je nach aktivem Radio-Button steuern */
-      #tab-spiral:checked ~ #content-spiral,
-      #tab-elliptical:checked ~ #content-elliptical,
-      #tab-irregular:checked ~ #content-irregular {
-        display: block;
-      }
-    </style>
   </body>
 </html>
