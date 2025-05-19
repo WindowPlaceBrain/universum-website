@@ -27,29 +27,15 @@
         <p class="apod-description" id="explanation"></p>
       </div>
     </main>
-    <footer>
+    <footer class="apod-footer">
       <nav aria-label="breadcrumb">
-        <ol
-          style="
-            list-style: none;
-            display: flex;
-            padding: 0;
-            margin: 0;
-            align-items: center;
-          "
-        >
-          <li style="margin-right: 0.5rem">
-            <a href="index.html" style="color: #00aaff; text-decoration: none"
-              >Zurück zur Startseite</a
-            >
-          </li>
-          <li style="margin: 0 1rem; color: #ffffff">oder</li>
+        <ol class="apod-footer-links">
           <li>
-            <a
-              href="https://apod.nasa.gov/apod/archivepix.html"
-              style="color: #00aaff; text-decoration: none"
-              >Vergangene ADOP</a
-            >
+            <a href="index.html">Zurück zur Startseite</a>
+          </li>
+          <li>oder</li>
+          <li>
+            <a href="https://apod.nasa.gov/apod/archivepix.html">Vergangene ADOP</a>
           </li>
         </ol>
       </nav>
@@ -80,47 +66,78 @@
           }
 
           const data = await response.json();
+          console.log("APOD API Full Response:", data); // Log entire response
+          
+          // Log detailed media information
+          console.log("Media Details:", {
+            mediaType: data.media_type,
+            url: data.url,
+            urlMp4: data.url_mp4, // Check for MP4 URL
+            hdUrl: data.hdurl,
+            title: data.title,
+            date: data.date
+          });
 
-          // Update the page with the fetched data
-          document.getElementById("title").textContent = data.title;
-
-          // Handle different media types
-          if (data.media_type === "video") {
-            let videoUrl = data.url;
-            
-            // Handle relative paths from NASA
-            if (videoUrl.startsWith('image/') || videoUrl.startsWith('/image/')) {
-                videoUrl = `https://apod.nasa.gov/apod/${videoUrl}`;
+          // Update media handling to include all cases
+          let mediaHtml = "";
+          if (
+            data.media_type === "video" ||
+            (data.media_type === "other" && (data.url_mp4 || data.url))
+          ) {
+            let videoUrl = data.url_mp4 || data.url;
+            if (videoUrl && (videoUrl.startsWith('image/') || videoUrl.startsWith('/image/'))) {
+              videoUrl = `https://apod.nasa.gov/apod/${videoUrl}`;
             }
-            // Handle YouTube URLs
-            else if (videoUrl.includes('youtube.com')) {
-                videoUrl = videoUrl.replace('watch?v=', 'embed/');
-                // Use iframe for YouTube videos
-                document.getElementById("media-container").innerHTML = `
-                    <iframe
-                        class="apod-video"
-                        src="${videoUrl}"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>`;
-            } else {
-                // Use video element for direct video files
-                document.getElementById("media-container").innerHTML = `
-                    <video controls class="apod-video">
-                        <source src="${videoUrl}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>`;
+            if (videoUrl && videoUrl.includes('youtube.com')) {
+              videoUrl = videoUrl.replace('watch?v=', 'embed/');
+              mediaHtml = `
+                <iframe
+                  class="apod-video"
+                  src="${videoUrl}"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>`;
+            } else if (videoUrl && videoUrl.endsWith('.mp4')) {
+              mediaHtml = `
+                <video controls class="apod-video">
+                  <source src="${videoUrl}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>`;
+            } else if (videoUrl) {
+              mediaHtml = `<a href="${videoUrl}" target="_blank" rel="noopener">Video ansehen</a>`;
             }
-          } else {
-            document.getElementById("media-container").innerHTML = `
-                <img
-                    class="apod-image"
-                    src="${data.url}"
-                    alt="${data.title}"
-                    loading="lazy">`;
           }
 
+          // --- NEU: Fallback für mp4-Link im explanation-Text ---
+          if (!mediaHtml) {
+            const mp4Match = data.explanation && data.explanation.match(/(image\/[^\s"']+\.mp4)/i);
+            if (mp4Match) {
+              const mp4Url = `https://apod.nasa.gov/apod/${mp4Match[1]}`;
+              mediaHtml = `
+                <video controls class="apod-video">
+                  <source src="${mp4Url}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>`;
+            }
+          }
+
+          // Bild-Fallback
+          if (!mediaHtml && data.media_type === "image" && data.url) {
+            mediaHtml = `
+              <img
+                class="apod-image"
+                src="${data.url}"
+                alt="${data.title}"
+                loading="lazy">`;
+          }
+
+          // Wenn immer noch nichts gefunden wurde
+          if (!mediaHtml) {
+            mediaHtml = `<p class="error-message">Kein Medieninhalt verfügbar.</p>`;
+          }
+
+          document.getElementById("media-container").innerHTML = mediaHtml;
           document.getElementById("explanation").textContent = data.explanation;
         } catch (error) {
           console.error("Error:", error);
