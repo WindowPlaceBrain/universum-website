@@ -127,35 +127,91 @@ body {
   font-size: 0.8rem;
 }
 
-.galaxy-tabs {
+/* stars-tabs */
+.stars-tabs {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin: 2rem;
 }
 
-/* Labels als Tabs */
-.galaxy-tabs > label {
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  background: #0d1b2a;
-  color: #fff;
-  display: inline-block;
-  margin-right: 0.5rem;
+/* Tab-Navigation Container */
+.stars-tabs .tab-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
-input[name='gal-tab'] {
+
+/* Inputs ausblenden */
+.stars-tabs .tab-nav input[type='radio'] {
   display: none;
 }
 
-/* Inhalte standardmäßig verstecken */
+/* Labels als Tabs */
+.stars-tabs .tab-nav label {
+  cursor: pointer;
+  padding: 0.7rem 1.2rem;
+  background: #0d1b2a;
+  color: #fff;
+  border-radius: 5px;
+  transition: background 0.3s, transform 0.2s;
+  text-align: center;
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+.stars-tabs .tab-nav label:hover {
+  background: #1b263b;
+  transform: translateY(-2px);
+}
+
+/* Aktiver Tab */
+.stars-tabs .tab-nav input[type='radio']:checked + label {
+  background: #00aaff;
+  box-shadow: 0 2px 8px rgba(0, 170, 255, 0.5);
+}
+
+/* Tab-Inhalte standardmäßig ausblenden */
 .tab-content {
   display: none;
 }
 
-/* Sichtbarkeit je nach aktivem Radio-Button steuern */
-#tab-spiral:checked ~ #content-spiral,
-#tab-elliptical:checked ~ #content-elliptical,
-#tab-irregular:checked ~ #content-irregular {
+/* Sichtbarkeit über :has() steuern */
+.stars-tabs:has(#tab-overview:checked) #content-overview,
+.stars-tabs:has(#tab-gas:checked) #content-gas,
+.stars-tabs:has(#tab-main:checked) #content-main,
+.stars-tabs:has(#tab-red:checked) #content-red,
+.stars-tabs:has(#tab-supernova:checked) #content-supernova,
+.stars-tabs:has(#tab-black:checked) #content-black,
+.stars-tabs:has(#tab-white:checked) #content-white,
+.stars-tabs:has(#tab-neutron:checked) #content-neutron {
   display: block;
+  animation: fadeIn 0.5s;
+}
+
+/* Responsive: Tabs untereinander bei wenig Platz */
+@media (max-width: 768px) {
+  .stars-tabs .tab-nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .stars-tabs .tab-nav label {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+/* Bilder in den Tabs */
+.tab-content img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Breadcrumb navigation styles */
@@ -186,4 +242,378 @@ input[name='gal-tab'] {
   color: red;
   padding: 1rem;
   text-align: center;
+}
+
+/* Solar System Layout */
+.solar-system {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background: linear-gradient(to bottom, #16213e 0%, #6b2900 1%, #000000 100%);
+}
+
+.planet-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgb(0, 0, 0);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.planet-image {
+  flex: 2;
+  max-width: 500px;
+}
+
+.planet-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transition: transform 1s ease;
+}
+
+.planet-image img:hover {
+  transform: scale(1.03);
+}
+
+.planet-info {
+  flex: 1;
+  padding: 1rem;
+}
+
+.planet-info h2 {
+  color: #33b1f0;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.planet-info p {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.planet-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.planet-info li {
+  margin: 0.5rem 0;
+  color: #cccccc;
+  font-size: 0.9rem;
+}
+
+/* Breadcrumb Styles */
+nav[aria-label='breadcrumb'] ol {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+nav[aria-label='breadcrumb'] li {
+  margin-right: 0.5rem;
+}
+
+nav[aria-label='breadcrumb'] a {
+  color: #00aaff;
+  text-decoration: none;
+}
+
+nav[aria-label='breadcrumb'] li:last-child {
+  color: #ffffff;
+}
+
+/* Footer Styles */
+footer {
+  flex-direction: column;
+  background: linear-gradient(to bottom, #000000, transparent 100%);
+  padding: 2rem;
+  padding-top: 5rem;
+  text-align: center;
+}
+
+.footer-links {
+  margin-bottom: 1.5rem;
+}
+
+.footer-links a {
+  color: #00aaff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  background: rgba(11, 87, 125, 0.1);
+}
+
+.footer-links a:hover {
+  background: rgba(0, 170, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 170, 255, 0.2);
+}
+
+.disclaimer {
+  color: #888;
+  font-size: 0.85rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+  padding: 1rem 1rem;
+}
+
+/* APOD Footer Styles */
+.apod-footer {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to top, #16213e 0%, transparent 100%);
+  padding: 1.5rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.apod-footer-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Add responsive styles */
+@media (max-width: 600px) {
+  .apod-footer-links {
+    flex-direction: column;
+    gap: 0rem;
+  }
+
+  .apod-footer-links li {
+    width: 100%;
+  }
+
+  .apod-footer-links a {
+    display: block;
+    width: 100%;
+    padding: 0.2rem;
+  }
+}
+
+/* General Footer (for index, sterne, kontakt pages) */
+.general-footer {
+  background: linear-gradient(to top, #16213e 0%, rgba(22, 33, 62, 0) 100%);
+  padding: 2rem;
+  text-align: center;
+  margin-top: auto;
+  width: 100%;
+}
+
+.general-footer .footer-links {
+  margin-bottom: 1.5rem;
+}
+
+.general-footer .footer-links a {
+  color: #00aaff;
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  background: rgba(0, 170, 255, 0.1);
+}
+
+.general-footer .footer-links a:hover {
+  background: rgba(0, 170, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 170, 255, 0.2);
+}
+
+.general-footer .disclaimer {
+  color: #888;
+  font-size: 0.85rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+  padding: 0 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+  .planet-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .planet-image {
+    max-width: 70%;
+  }
+
+  .planet-info {
+    padding: 1rem 0;
+  }
+
+  .planet-info ul {
+    display: inline-block;
+    text-align: left;
+  }
+}
+
+/* Tab Inhalte für Sterne */
+.stars-tabs .tab-content {
+  display: none;
+  animation: fadeIn 0.5s;
+  margin-top: 0.5rem; /* Abstand zwischen Tabs und Inhalt */
+  background-color: #000000; /* Schwarzer Hintergrund für den Inhalt */
+  text-align: center; /* Inhalt zentrieren */
+  justify-content: center; /* Für Flexbox-Fall */
+  align-items: center; /* Für Flexbox-Fall */
+}
+
+/* Sichtbarkeit der Inhalte je nach aktivem Tab */
+#tab-overview:checked ~ #content-overview {
+  display: block;
+}
+
+#tab-gas:checked ~ #content-gas {
+  display: block;
+}
+
+#tab-main:checked ~ #content-main {
+  display: block;
+}
+
+#tab-red:checked ~ #content-red {
+  display: block;
+}
+
+#tab-supernova:checked ~ #content-supernova {
+  display: block;
+}
+
+#tab-black:checked ~ #content-black {
+  display: block;
+}
+
+#tab-white:checked ~ #content-white {
+  display: block;
+}
+
+#tab-neutron:checked ~ #content-neutron {
+  display: block;
+}
+
+/* Tab Navigation für Sterne */
+.stars-tabs .tab-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Inputs ausblenden */
+.stars-tabs input[type='radio'] {
+  display: none;
+}
+
+/* Labels als Tabs stylen - für horizontale Anordnung optimiert */
+.stars-tabs .tab-nav label {
+  cursor: pointer;
+  padding: 0.7rem 1.2rem;
+  background: #0d1b2a;
+  color: #fff;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  flex: 0 1 auto;
+  min-width: 120px;
+  margin: 0;
+}
+
+.stars-tabs .tab-nav label:hover {
+  background: #1b263b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Markierung für ausgewählte Tabs */
+#tab-overview:checked + label,
+#tab-gas:checked + label,
+#tab-main:checked + label,
+#tab-red:checked + label,
+#tab-supernova:checked + label,
+#tab-black:checked + label,
+#tab-white:checked + label,
+#tab-neutron:checked + label {
+  background: #00aaff;
+  box-shadow: 0 2px 8px rgba(0, 170, 255, 0.5);
+}
+
+/* Responsive Design für die Tabs */
+@media (max-width: 768px) {
+  .stars-tabs .tab-nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stars-tabs .tab-nav label {
+    width: 100%;
+    min-width: unset;
+    margin-bottom: 0.3rem;
+  }
+}
+
+/* Neue Styles für Tab-Inhalte mit Flexbox */
+.tab-content-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.tab-content-image {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 1rem;
+  background: rgb(0, 0, 0);
+}
+
+.tab-content-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tab-content-text {
+  flex: 1 1 50%;
+  text-align: left;
+  padding: 1rem;
+}
+
+/* Responsive Anpassungen für die neuen Tab-Inhalte */
+@media (max-width: 768px) {
+  .tab-content-flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .tab-content-image,
+  .tab-content-text {
+    flex: unset;
+    width: 100%;
+    justify-content: center;
+    text-align: left;
+    padding: 1rem;
+  }
 }

@@ -3,67 +3,388 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Die Entwicklung der Sterne</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
     <header>
       <nav aria-label="breadcrumb">
-        <ol style="list-style: none; display: flex; padding: 0; margin: 0">
-          <li style="margin-right: 0.5rem">
-            <a href="index.html" style="color: #00aaff; text-decoration: none"
-              >Startseite</a
-            >
-          </li>
-          <li style="margin-right: 0.5rem">/</li>
-          <li style="color: #ffffff">Sterne</li>
+        <ol>
+          <li><a href="index.html">Startseite</a></li>
+          <li>/</li>
+          <li>Sterne</li>
         </ol>
       </nav>
       <nav class="navbar">
-        <div class="logo">&#x1F31E; Das Leben eines Sternes </div>
+        <div class="logo">&#x1F31E; Das Leben eines Sternes</div>
         <ul class="nav-links">
           <li><a href="index.html">Startseite</a></li>
-          <!--Startseite-->
           <li><a href="sonnensystem.html">Sonnensystem</a></li>
-          <!--Infos über das Sonnensystem-->
           <li><a href="sterne.html">Sterne</a></li>
-          <!--Die verschiedenen Stadien, welche ein Stern durchläuft-->
           <li><a href="apod.html">Bild des Tages</a></li>
-          <!--NASA "Astronomy Picture" per API-->
           <li><a href="kontakt.html">Kontakt</a></li>
-          <!--Kontaktseite für Fragen an den "Astro-Klub"-->
         </ul>
       </nav>
     </header>
 
-    <section class="galaxy-tabs">
-      <!-- unsichtbare Radio‑Buttons -->
-      <input type="radio" id="tab-spiral" name="gal-tab" checked />
-      <label for="tab-spiral">Spiral</label>
+    <section class="stars-tabs">
+      <div class="tab-nav">
+        <!-- Radio-Buttons und Labels in tab-nav -->
+        <input type="radio" id="tab-overview" name="stars-tab" checked />
+        <label for="tab-overview">Übersicht</label>
 
-      <input type="radio" id="tab-elliptical" name="gal-tab" />
-      <label for="tab-elliptical">Elliptisch</label>
-
-      <input type="radio" id="tab-irregular" name="gal-tab" />
-      <label for="tab-irregular">Irregulär</label>
+        <input type="radio" id="tab-gas" name="stars-tab" />
+        <label for="tab-gas">Gaswolke</label>
+        
+        <input type="radio" id="tab-main" name="stars-tab" />
+        <label for="tab-main">Hauptreihenstern</label>
+        
+        <input type="radio" id="tab-red" name="stars-tab" />
+        <label for="tab-red">Roter Riesenstern</label>
+        
+        <input type="radio" id="tab-supernova" name="stars-tab" />
+        <label for="tab-supernova">Supernova</label>
+        
+        <input type="radio" id="tab-black" name="stars-tab" />
+        <label for="tab-black">Schwarzes Loch</label>
+        
+        <input type="radio" id="tab-white" name="stars-tab" />
+        <label for="tab-white">Weisser Zwerg</label>
+        
+        <input type="radio" id="tab-neutron" name="stars-tab" />
+        <label for="tab-neutron">Neutronenstern</label>
+      </div>
 
       <!-- Inhalte -->
-      <div class="tab-content" id="content-spiral">
-        <h3>Spiralgalaxien</h3>
-        <img src="spiral.jpg" alt="Spiralgalaxie" />
-        <p>Spiralgalaxien haben...</p>
+      <div class="tab-content" id="content-overview">
+        <div class="tab-content-flex">
+          <div class="tab-content-image">
+            <img src="images/Sternentwicklung.png" alt="Übersicht Sternentwicklung" />
+          </div>
+          <div class="tab-content-text">
+            <h3>Übersicht der Sternentwicklung</h3>
+            <p>
+              Sterne entstehen, leben und sterben in einem faszinierenden Kreislauf, der von ihrer Anfangsmasse bestimmt wird. Dieses kosmische Drama spielt sich seit über 13 Milliarden Jahren ab und ist der Grundbaustein für die chemische Entwicklung des Universums. Sterne sind die kosmischen Fabriken, die leichte Elemente zu schwereren verschmelzen.
+            </p>
+            <p>
+              Der Lebensweg eines Sterns wird hauptsächlich durch seine Masse bestimmt:
+            </p>
+            <ul>
+              <li><strong>Massearme Sterne</strong> (0,08-0,8 Sonnenmassen): Langsame Entwicklung, werden zu Weißen Zwergen</li>
+              <li><strong>Sonnenähnliche Sterne</strong> (0,8-8 Sonnenmassen): Hauptreihe → Roter Riese → Planetarischer Nebel → Weißer Zwerg</li>
+              <li><strong>Massereiche Sterne</strong> (8-25 Sonnenmassen): Schnelle Entwicklung → Supernova → Neutronenstern</li>
+              <li><strong>Sehr massereiche Sterne</strong> (>25 Sonnenmassen): Extrem schnelle Entwicklung → Supernova → Schwarzes Loch</li>
+            </ul>
+            <p>
+              Die Entwicklung eines Sterns beeinflusst die chemische Zusammensetzung des Universums und ist entscheidend für die Entstehung von Planeten und Leben. Alle Elemente schwerer als Helium wurden im Inneren von Sternen oder bei Supernovae erschaffen – wir sind buchstäblich "Sternenstaub".
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="tab-content" id="content-elliptical">
-        <h3>Elliptische Galaxien</h3>
-        <img src="elliptical.jpg" alt="Elliptische Galaxie" />
-        <p>Elliptische Galaxien zeichnen sich aus durch...</p>
+      
+      <div class="tab-content" id="content-gas">
+        <div class="tab-content-flex">
+          <div class="tab-content-image">
+            <img src="images/star-birth.jpg" alt="Gaswolke" />
+          </div>
+          <div class="tab-content-text">
+            <h3>Gaswolke</h3>
+            <p>
+              Sterne entstehen in gigantischen Molekülwolken, die hauptsächlich aus molekularem Wasserstoff (H₂) bestehen. Diese Wolken können mehrere hundert Lichtjahre durchmessen und Millionen Sonnenmassen enthalten. Der Orionnebel ist eines der bekanntesten Beispiele für eine aktive Sternentstehungsregion.
+            </p>
+            <p>
+              Der Prozess beginnt, wenn Teile einer Wolke instabil werden. Dies kann ausgelöst werden durch:
+            </p>
+            <ul>
+              <li>Stoßwellen einer nahen Supernova</li>
+              <li>Kollisionen zwischen Galaxien</li>
+              <li>Spiralarmkompressionen in Galaxien</li>
+              <li>Turbulenzen innerhalb der Wolke selbst</li>
+            </ul>
+            <p>
+              Die Instabilität führt zum Gravitationskollaps: Die Wolke zieht sich unter ihrer eigenen Schwerkraft zusammen. Während des Kollapses bilden sich dichtere Regionen, genannt Protosterne. In ihrem Zentrum steigt die Temperatur und der Druck dramatisch an – von anfänglich etwa 10 Kelvin auf mehrere Millionen Kelvin.
+            </p>
+            <p>
+              Wenn die Zentraltemperatur etwa 15 Millionen Kelvin erreicht, zündet die Wasserstofffusion – der Protostern wird zum vollwertigen Stern. Für Sterne wie unsere Sonne dauert dieser gesamte Entstehungsprozess etwa 10 Millionen Jahre, für massereiche Sterne geht es deutlich schneller.
+            </p>
+            <p>
+              Das übriggebliebene Material der Wolke kann Planetensysteme bilden. In unserer Milchstraße entstehen jedes Jahr etwa 7 neue Sterne – ein Prozess, der seit Milliarden Jahren andauert und weiterhin neues Leben im Kosmos erschafft.
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="tab-content" id="content-irregular">
-        <h3>Irreguläre Galaxien</h3>
-        <img src="irregular.jpg" alt="Irreguläre Galaxie" />
-        <p>Irreguläre Galaxien haben keine klare Form...</p>
+      
+      <div class="tab-content" id="content-main">
+        <div class="tab-content-flex">
+          <div class="tab-content-image">
+            <img src="images/star-main.png" alt="Hauptreihenstern" />
+          </div>
+          <div class="tab-content-text">
+            <h3>Hauptreihenstern</h3>
+            <p>
+              Die Hauptreihe ist der längste und stabilste Lebensabschnitt eines Sterns. In dieser Phase herrscht ein perfektes Gleichgewicht zwischen der nach außen drängenden Strahlungskraft der Kernfusion und der nach innen ziehenden Gravitationskraft – der hydrostatische Gleichgewichtszustand.
+            </p>
+            <p>
+              Im Kern eines Hauptreihensterns findet der Proton-Proton-Zyklus statt: Vier Wasserstoffkerne (Protonen) verschmelzen zu einem Heliumkern, wobei Energie nach Einstein's Formel E=mc² freigesetzt wird. Jede Sekunde wandelt unsere Sonne etwa 600 Millionen Tonnen Wasserstoff in 596 Millionen Tonnen Helium um – die Differenz von 4 Millionen Tonnen wird in pure Energie umgewandelt.
+            </p>
+            <p>
+              Die Lebensdauer eines Hauptreihensterns hängt entscheidend von seiner Masse ab:
+            </p>
+            <table>
+              <tr>
+                <th>Sterntyp</th>
+                <th>Masse (Sonnenmassen)</th>
+                <th>Oberflächentemperatur</th>
+                <th>Lebensdauer</th>
+              </tr>
+              <tr>
+                <td>O-Sterne (blau)</td>
+                <td>20-150</td>
+                <td>30.000-50.000 K</td>
+                <td>1-10 Millionen Jahre</td>
+              </tr>
+              <tr>
+                <td>B-Sterne (blau-weiß)</td>
+                <td>3-20</td>
+                <td>10.000-30.000 K</td>
+                <td>10-100 Millionen Jahre</td>
+              </tr>
+              <tr>
+                <td>A-Sterne (weiß)</td>
+                <td>1,5-3</td>
+                <td>7.500-10.000 K</td>
+                <td>100-1.000 Millionen Jahre</td>
+              </tr>
+              <tr>
+                <td>G-Sterne (gelb, wie unsere Sonne)</td>
+                <td>0,8-1,2</td>
+                <td>5.500-6.000 K</td>
+                <td>10 Milliarden Jahre</td>
+              </tr>
+              <tr>
+                <td>M-Sterne (rot, Zwergsterne)</td>
+                <td>0,08-0,5</td>
+                <td>2.500-3.500 K</td>
+                <td>100 Milliarden - 10 Billionen Jahre</td>
+              </tr>
+            </table>
+            <p>
+              Die paradoxe Regel lautet: Je massereicher ein Stern ist, desto kürzer lebt er. Dies liegt daran, dass massereiche Sterne ihren Brennstoff viel schneller verbrauchen müssen, um dem höheren Gravitationsdruck entgegenzuwirken.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="content-red">
+        <div class="tab-content-flex">
+          <div class="tab-content-image">
+            <img src="images/star-redgiant.webp" alt="Roter Riesenstern" />
+          </div>
+          <div class="tab-content-text">
+            <h3>Roter Riesenstern</h3>
+            <p>
+              Wenn der Wasserstoff im Kern aufgebraucht ist, beginnt die dramatische Transformation zum Roten Riesen. Bei einem sonnenähnlichen Stern passiert dies nach etwa 10 Milliarden Jahren Hauptreihenphase. Der Heliumkern zieht sich zusammen und erhitzt sich auf etwa 100 Millionen Kelvin, während gleichzeitig eine Wasserstoff-brennende Schale um den Kern entsteht.
+            </p>
+            <p>
+              Diese Schalenverbrennung produziert mehr Energie als die frühere Kernfusion, was zu einer enormen Expansion der äußeren Hüllen führt. Der Stern bläht sich auf das 100- bis 1000-fache seines ursprünglichen Durchmessers auf – würde unsere Sonne zum Roten Riesen, würde sie bis zur Marsbahn reichen und die inneren Planeten verschlingen.
+            </p>
+            <p>
+              Obwohl die Oberfläche des Sterns nun kühler ist (etwa 3.000-4.000 K, daher die rote Farbe), strahlt er aufgrund seiner enormen Größe 1.000- bis 10.000-mal mehr Energie ab als zuvor. Bekannte Rote Riesen am Nachthimmel sind Arcturus im Sternbild Bootes und Aldebaran im Stier.
+            </p>
+            <p>
+              Im Kern eines Roten Riesen wird es schließlich heiß genug für den Helium-Flash – eine explosive Zündung der Heliumfusion (Triple-Alpha-Prozess), bei der drei Heliumkerne zu einem Kohlenstoffkern verschmelzen. Nach dem Helium-Flash stabilisiert sich der Stern vorübergehend als "Horizontal-Ast-Stern".
+            </p>
+            <p>
+              Rote Riesen verlieren durch starke Sternwinde erhebliche Mengen ihrer Masse – bis zu 10⁻⁷ Sonnenmassen pro Jahr. Diese abgestoßene Materie bildet spektakuläre, farbenfrohe Nebel um den Stern. Der massereichere Nachfolger des Roten Riesen ist der Rote Überriese wie Beteigeuze, der bis zu 1.000 Sonnendurchmesser erreichen kann.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="content-supernova">
+        <div class="tab-content-flex">
+          <div class="tab-content-image">
+            <img src="images/star-supernova.jpg" alt="Supernova" />
+          </div>
+          <div class="tab-content-text">
+            <h3>Supernova</h3>
+            <p>
+              Supernovae sind die gewaltigsten Explosionen im Universum seit dem Urknall. Sie markieren das spektakuläre Ende massereicher Sterne (>8 Sonnenmassen) und können für Wochen heller leuchten als eine ganze Galaxie mit Milliarden von Sternen. Es gibt zwei Haupttypen von Supernovae:
+            </p>
+            <h4>Typ II Supernova (Kernkollaps)</h4>
+            <p>
+              Bei massereichen Sternen hat sich im Laufe ihres Lebens eine Zwiebelschalenstruktur gebildet, in der verschiedene Elemente fusionieren – von Wasserstoff (außen) bis Eisen (im Kern). Sobald sich ein Eisenkern bildet, ist das Schicksal des Sterns besiegelt, da Eisenfusion Energie verbraucht statt freizusetzen.
+            </p>
+            <p>
+              Der Eisenkern kollabiert innerhalb von Sekunden zu einer unvorstellbaren Dichte. Dabei werden Elektronen in die Atomkerne gedrückt und verschmelzen mit Protonen zu Neutronen – ein Prozess, der Neutrinos freisetzt. Diese Neutrinos tragen 99% der Supernova-Energie weg. Der Kollaps stoppt erst, wenn die Kernmaterie so dicht wie ein Atomkern wird.
+            </p>
+            <p>
+              Die einfallenden äußeren Schichten prallen vom nun unvorstellbar harten Kern ab und werden in einer gewaltigen Schockwelle nach außen geschleudert. Die Explosion erreicht Temperaturen von mehreren Milliarden Kelvin und Geschwindigkeiten von 30.000 km/s (10% der Lichtgeschwindigkeit).
+            </p>
+            <h4>Typ Ia Supernova (Thermonuklear)</h4>
+            <p>
+              Diese entsteht in Doppelsternsystemen, wenn ein Weißer Zwerg Material von seinem Begleitstern akkretiert, bis er die Chandrasekhar-Grenze von 1,44 Sonnenmassen überschreitet. Dies löst eine unkontrollierbare Kohlenstoff-Fusion aus, die den gesamten Stern innerhalb von Sekunden zerstört.
+            </p>
+            <p>
+              Supernovae spielen eine entscheidende Rolle im Universum:
+            </p>
+            <ul>
+              <li>Sie verteilen schwere Elemente im Kosmos (alles schwerer als Eisen wird in Supernovae erschaffen)</li>
+              <li>Sie lösen durch ihre Schockwellen neue Sternentstehung aus</li>
+              <li>Sie sind "Standard-Kerzen" zur Messung kosmischer Entfernungen</li>
+              <li>Sie hinterlassen extreme Überreste: Neutronensterne oder Schwarze Löcher</li>
+            </ul>
+            <p>
+              Die letzte in unserer Galaxie beobachtete Supernova war Keplers Stern von 1604, aber wir beobachten jährlich hunderte in anderen Galaxien. Die Supernova 1987A in der Großen Magellanschen Wolke war die nächste und am besten studierte der modernen Astronomie.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="content-black">
+        <div class="tab-content-flex">
+          <div class="tab-content-image">
+            <img src="images/star-blackhole.webp" alt="Schwarzes Loch" />
+          </div>
+          <div class="tab-content-text">
+            <h3>Schwarzes Loch</h3>
+            <p>
+              Schwarze Löcher entstehen, wenn nach einer Supernova ein Restkern von mehr als etwa 3 Sonnenmassen zurückbleibt. Bei dieser enormen Masse kann keine bekannte Kraft dem Gravitationskollaps widerstehen – der Stern kollabiert zu einem Punkt unendlicher Dichte, einer "Singularität".
+            </p>
+            <p>
+              Die wichtigsten Eigenschaften eines Schwarzen Lochs sind:
+            </p>
+            <ul>
+              <li><strong>Ereignishorizont</strong>: Die Grenze, ab der kein Zurück mehr möglich ist. Die Fluchtgeschwindigkeit hier entspricht der Lichtgeschwindigkeit.</li>
+              <li><strong>Singularität</strong>: Der theoretische Mittelpunkt mit unendlicher Dichte, in dem die bekannten Gesetze der Physik zusammenbrechen.</li>
+              <li><strong>Schwarzschild-Radius</strong>: Die Größe des Ereignishorizonts, proportional zur Masse (für Sonnenmasse etwa 3 km).</li>
+            </ul>
+            <p>
+              Schwarze Löcher sind unsichtbar, da sie kein Licht aussenden. Wir können sie nur indirekt nachweisen durch:
+            </p>
+            <ul>
+              <li><strong>Gravitationswirkung</strong> auf umliegende Sterne und Gas</li>
+              <li><strong>Akkretionsscheiben</strong> – extrem heißes Gas, das das Schwarze Loch umkreist und intensiv strahlt</li>
+              <li><strong>Jets</strong> – gebündelte Materiestrahlen, die von den Polen des rotierenden Schwarzen Lochs mit nahezu Lichtgeschwindigkeit ins All geschleudert werden</li>
+              <li><strong>Gravitationswellen</strong> – Ripples in der Raumzeit, die bei Verschmelzungen von Schwarzen Löchern entstehen</li>
+              <li><strong>Gravitationslinsen</strong> – Lichtablenkung durch die extreme Raumzeitkrümmung</li>
+            </ul>
+            <p>
+              Wissenschaftler unterscheiden verschiedene Typen:
+            </p>
+            <ul>
+              <li><strong>Stellare Schwarze Löcher</strong> (5-100 Sonnenmassen) entstehen aus massereichen Sternen</li>
+              <li><strong>Mittelschwere Schwarze Löcher</strong> (100-100.000 Sonnenmassen) möglicherweise durch Verschmelzungen</li>
+              <li><strong>Supermassive Schwarze Löcher</strong> (Millionen bis Milliarden Sonnenmassen) im Zentrum der meisten Galaxien. Das Zentrum unserer Milchstraße beherbergt Sagittarius A* mit etwa 4 Millionen Sonnenmassen.</li>
+            </ul>
+            <p>
+              2019 gelang mit dem Event Horizon Telescope die erste direkte "Aufnahme" eines Schwarzen Lochs – genauer gesagt seines Schattens vor der glühenden Akkretionsscheibe – im Zentrum der Galaxie M87.
+            </p>
+            <p>
+              Stephen Hawking zeigte theoretisch, dass Schwarze Löcher durch Quanteneffekte sehr langsam "verdampfen" können (Hawking-Strahlung), ein Prozess, der für stellare Schwarze Löcher jedoch länger dauern würde als das derzeitige Alter des Universums.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="content-white">
+        <div class="tab-content-flex">
+          <div class="tab-content-image">
+            <img src="images/star-whitedwarf.jpg" alt="Weißer Zwerg" />
+          </div>
+          <div class="tab-content-text">
+            <h3>Weißer Zwerg</h3>
+            <p>
+              Weiße Zwerge sind die verbleibenden Kerne von Sternen mit geringer bis mittlerer Masse (unter 8 Sonnenmassen) nach dem Ende ihrer Fusionsprozesse. Unsere Sonne wird in etwa 5 Milliarden Jahren zu einem Weißen Zwerg werden, nachdem sie ihre äußeren Schichten als planetarischen Nebel abgestoßen hat.
+            </p>
+            <p>
+              Diese stellaren Überreste haben erstaunliche Eigenschaften:
+            </p>
+            <ul>
+              <li><strong>Größe</strong>: Etwa erdgroß (Durchmesser ca. 12.000 km), aber mit der Masse einer Sonne</li>
+              <li><strong>Dichte</strong>: Etwa 1 Million Mal dichter als Wasser – ein Teelöffel Material würde auf der Erde etwa 5 Tonnen wiegen</li>
+              <li><strong>Zusammensetzung</strong>: Hauptsächlich Kohlenstoff und Sauerstoff in einem Kristallgitter, umgeben von einer dünnen Atmosphäre aus Wasserstoff oder Helium</li>
+              <li><strong>Temperatur</strong>: Anfangs extrem heiß (100.000 K), kühlen aber langsam ab</li>
+            </ul>
+            <p>
+              Ein Weißer Zwerg ist kein aktiver Stern mehr – er erzeugt keine Energie durch Fusion. Seine Stabilität verdankt er dem Entartungsdruck der Elektronen, einer Quanteneigenschaft, die verhindert, dass Elektronen denselben Quantenzustand einnehmen können. Dieser Druck hält der Gravitation stand und verhindert einen weiteren Kollaps.
+            </p>
+            <p>
+              Es gibt jedoch eine fundamentale Grenze für diese Stabilität: Die Chandrasekhar-Grenze von etwa 1,44 Sonnenmassen. Überschreitet ein Weißer Zwerg diese Grenze (z.B. durch Materieübertrag in einem Doppelsternsystem), kollabiert er und explodiert als Typ Ia Supernova.
+            </p>
+            <p>
+              Ohne weitere Energiequellen kühlen Weiße Zwerge über Billionen von Jahren langsam ab und werden zu "Schwarzen Zwergen" – theoretischen Objekten, die noch nicht existieren können, da das Universum nicht alt genug ist. Der älteste bekannte Weiße Zwerg (ca. 10 Milliarden Jahre) hat noch eine Oberflächentemperatur von etwa 5.000 K.
+            </p>
+            <p>
+              Der nächstgelegene Weiße Zwerg ist Sirius B, der Begleiter des hellsten Sterns am Himmel. Trotz seiner sonnenähnlichen Masse ist er 10.000 Mal lichtschwächer als unser Tagesgestirn und nur mit guten Teleskopen sichtbar.
+            </p>
+            <p>
+              Faszinierenderweise sind die ultrakomprimierten Kohlenstoffschichten tief im Inneren Weißer Zwerge vermutlich kristallisiert – sie bilden den größten Diamanten des Universums.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="content-neutron">
+        <div class="tab-content-flex">
+          <div class="tab-content-image">
+            <img src="images/star-neutron.jpg" alt="Neutronenstern" />
+          </div>
+          <div class="tab-content-text">
+            <h3>Neutronenstern</h3>
+            <p>
+              Neutronensterne entstehen, wenn der Kernrest einer Supernova zwischen 1,4 und 3 Sonnenmassen wiegt – zu schwer für einen Weißen Zwerg, aber zu leicht für ein Schwarzes Loch. Sie repräsentieren die extremste Form von Materie, die wir im Universum direkt beobachten können.
+            </p>
+            <p>
+              Die Physik dieser Objekte ist atemberaubend:
+            </p>
+            <ul>
+              <li><strong>Größe</strong>: Nur etwa 20-30 km Durchmesser – kleiner als manche Großstadt</li>
+              <li><strong>Dichte</strong>: 10^17 kg/m³ – ein Teelöffel wiegt eine Milliarde Tonnen</li>
+              <li><strong>Rotation</strong>: Bis zu mehrere hundert Umdrehungen pro Sekunde</li>
+              <li><strong>Magnetfeld</strong>: Bis zu 10^15 Mal stärker als das der Erde</li>
+              <li><strong>Oberflächenschwerkraft</strong>: 10^11 mal stärker als auf der Erde</li>
+            </ul>
+            <p>
+              Während der Supernova werden Elektronen und Protonen zu Neutronen zusammengepresst – daher der Name. Der Neutronenstern besteht aus:
+            </p>
+            <ol>
+              <li><strong>Kruste</strong>: Extrem dichtes Kristallgitter aus Atomkernen und Elektronen</li>
+              <li><strong>Äußerer Kern</strong>: Supraleiter aus Neutronen mit einer "Flüssigkeit" aus Protonen und Elektronen</li>
+              <li><strong>Innerer Kern</strong>: Möglicherweise exotische Quark-Materie oder Hyperonen</li>
+            </ol>
+            <p>
+              Viele Neutronensterne manifestieren sich als Pulsare – rotierende kosmische Leuchtfeuer, die regelmäßige Radiopulse aussenden. Diese entstehen durch Teilchenstrahlen, die entlang der Magnetfeldlinien beschleunigt werden und wie ein kosmischer Leuchtturm über die Erde streichen.
+            </p>
+            <p>
+              Weitere faszinierende Phänomene bei Neutronensternen:
+            </p>
+            <ul>
+              <li><strong>Starquakes</strong>: "Sternbeben" in der festen Kruste, die Rotationsgeschwindigkeit und Magnetfeld verändern</li>
+              <li><strong>Glitches</strong>: Plötzliche Beschleunigungen der Rotation</li>
+              <li><strong>Magnetare</strong>: Neutronensterne mit extremen Magnetfeldern, die gewaltige Gammastrahlenausbrüche erzeugen können</li>
+              <li><strong>Millisekunden-Pulsare</strong>: Extrem schnell rotierende Neutronensterne, die durch Materieübertrag von einem Begleitstern "aufgewirbelt" wurden</li>
+            </ul>
+            <p>
+              Wenn zwei Neutronensterne verschmelzen, entstehen Gravitationswellen und Kilonova-Explosionen, bei denen schwerste Elemente wie Gold und Platin entstehen. Solch ein Ereignis wurde 2017 erstmals sowohl durch Gravitationswellen als auch elektromagnetische Strahlung beobachtet (GW170817).
+            </p>
+            <p>
+              Der bekannteste Pulsar ist der Krebsnebel-Pulsar (PSR B0531+21), der Überrest einer 1054 n. Chr. beobachteten Supernova. Er rotiert 30-mal pro Sekunde und sendet Strahlung über das gesamte elektromagnetische Spektrum aus.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
+
+    <footer class="general-footer">
+      <div class="footer-links">
+        <a href="#top">Zurück zum Seitenanfang</a>
+      </div>
+      <p class="disclaimer">
+        © 2025 Luca Moser
+        Keine Rechte vorbehalten.
+      </p>
+    </footer>
   </body>
 </html>
