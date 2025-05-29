@@ -408,7 +408,7 @@ footer {
 
 /* General Footer (for index, sterne, kontakt pages) */
 .general-footer {
-  background: linear-gradient(to top, #16213e 0%, rgba(22, 33, 62, 0) 100%);
+  background: #00000000;
   padding: 2rem;
   text-align: center;
   margin-top: auto;
@@ -616,4 +616,173 @@ footer {
     text-align: left;
     padding: 1rem;
   }
+}
+
+/* Simple Welcome Section */
+.welcome-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.welcome-section h1 {
+  color: #00aaff;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.welcome-section h2 {
+  color: #00aaff;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.welcome-section p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.hero-container {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.hero-container img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.hero-container .overlay-text {
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* Kontaktformular - Responsive Styling */
+#contact-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+#contact-form fieldset {
+  border: 1px solid #00aaff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#contact-form legend {
+  color: #00aaff;
+  font-size: 1.2rem;
+  padding: 0 10px;
+}
+
+#contact-form table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#contact-form input[type='text'],
+#contact-form input[type='email'],
+#contact-form select,
+#contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: rgba(22, 33, 62, 0.8);
+  color: white;
+}
+
+#contact-form button {
+  background-color: #00aaff;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+#contact-form button:hover {
+  background-color: #0088cc;
+}
+
+/* Mobile-Anpassungen für Kontaktformular */
+@media (max-width: 768px) {
+  #contact-form table,
+  #contact-form tbody,
+  #contact-form tr,
+  #contact-form td {
+    display: block;
+    width: 100%;
+  }
+
+  #contact-form td {
+    padding: 0.3rem 0;
+  }
+
+  #contact-form tr {
+    margin-bottom: 1rem;
+  }
+
+  #contact-form textarea {
+    min-height: 150px;
+  }
+
+  #contact-form fieldset {
+    padding: 1rem;
+  }
+
+  #contact-form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+  }
+}
+
+/* Kontaktseiten-Hauptbereich */
+main > div {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+main > div > section:first-child {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+main > div > section h1 {
+  color: #00aaff;
+  margin-bottom: 1rem;
+}
+
+main > div > section ul {
+  list-style: none;
+  padding: 0;
+}
+
+main > div > section li {
+  margin: 0.5rem 0;
+}
+
+main > div > section a {
+  color: #00aaff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+main > div > section a:hover {
+  color: #0088cc;
+  text-decoration: underline;
 }
