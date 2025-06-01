@@ -1,0 +1,707 @@
+/**
+ * styles.css - Optimierte Version
+ * 
+ * Enthält die Stile für die Universum-Webseite.
+ * Neu strukturiert und optimiert.
+ */
+
+/* ---------- VARIABLEN ---------- */
+:root {
+  --color-background: #1a1a2e;
+  --color-navbar: #16213e;
+  --color-accent: #00aaff;
+  --color-text: #ffffff;
+  --color-text-secondary: #cccccc;
+  --color-alien: #0dfd00;
+  --color-footer-text: #888;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --transition-default: all 0.3s ease;
+}
+
+/* ---------- GRUNDLEGENDE STILE ---------- */
+* {
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+/* ---------- NAVIGATION & HEADER ---------- */
+/* Breadcrumb Navigation */
+nav[aria-label='breadcrumb'] ol,
+.breadcrumb {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+nav[aria-label='breadcrumb'] li,
+.breadcrumb li {
+  margin-right: 0.5rem;
+}
+
+nav[aria-label='breadcrumb'] a,
+.breadcrumb a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+/* Hauptnavigation */
+.navbar {
+  background-color: var(--color-navbar);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.nav-links li {
+  margin: 0.5rem;
+}
+
+.nav-links a {
+  color: var(--color-text);
+  text-decoration: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition-default);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-accent);
+  background-color: rgba(0, 170, 255, 0.1);
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Logo mit Alien-Hover-Effekt */
+.logo-container {
+  position: relative;
+  display: inline-block;
+}
+
+#alien {
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+#alien:hover {
+  color: var(--color-alien);
+  filter: blur(2px);
+}
+
+.hover-text {
+  display: none;
+  position: absolute;
+  top: 200%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-background);
+  color: #29b345;
+  padding: 4rem 10rem;
+  border-radius: var(--border-radius);
+  white-space: nowrap;
+  font-size: 0.9rem;
+  z-index: 10;
+}
+
+.logo-container:hover .hover-text {
+  display: block;
+}
+
+/* ---------- WELCOME SECTION (STARTSEITE) ---------- */
+.welcome-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.welcome-section h1 {
+  color: var(--color-accent);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.welcome-section h2 {
+  color: var(--color-accent);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.welcome-section p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.hero-container {
+  position: relative;
+  margin-bottom: 2rem;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.hero-container img {
+  width: 100%;
+  display: block;
+  border-radius: var(--border-radius);
+}
+
+.hero-container .overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* ---------- SONNENSYSTEM ---------- */
+.solar-system {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background: linear-gradient(to bottom, #16213e 0%, #6b2900 1%, #000000 100%);
+}
+
+.planet-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgb(0, 0, 0);
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+}
+
+.planet-image {
+  flex: 2;
+  max-width: 500px;
+}
+
+.planet-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transition: transform 1s ease;
+}
+
+.planet-image img:hover {
+  transform: scale(1.03);
+}
+
+.planet-info {
+  flex: 1;
+  padding: 1rem;
+}
+
+.planet-info h2 {
+  color: #33b1f0;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.planet-info p {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+}
+
+.planet-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.planet-info li {
+  margin: 0.5rem 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+/* ---------- STERNE TABS ---------- */
+.stars-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin: 2rem;
+}
+
+/* Tab-Navigation */
+.stars-tabs .tab-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stars-tabs input[type='radio'] {
+  display: none;
+}
+
+.stars-tabs .tab-nav label {
+  cursor: pointer;
+  padding: 0.7rem 1.2rem;
+  background: #0d1b2a;
+  color: #fff;
+  border-radius: 5px;
+  transition: background 0.3s, transform 0.2s;
+  text-align: center;
+  min-width: 120px;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.stars-tabs .tab-nav label:hover {
+  background: #1b263b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.stars-tabs .tab-nav input[type='radio']:checked + label {
+  background: var(--color-accent);
+  box-shadow: 0 2px 8px rgba(0, 170, 255, 0.5);
+}
+
+/* Tab-Inhalte */
+.tab-content {
+  display: none;
+  background-color: #000000;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  animation: fadeIn 0.5s;
+}
+
+.stars-tabs:has(#tab-overview:checked) #content-overview,
+.stars-tabs:has(#tab-gas:checked) #content-gas,
+.stars-tabs:has(#tab-main:checked) #content-main,
+.stars-tabs:has(#tab-red:checked) #content-red,
+.stars-tabs:has(#tab-supernova:checked) #content-supernova,
+.stars-tabs:has(#tab-black:checked) #content-black,
+.stars-tabs:has(#tab-white:checked) #content-white,
+.stars-tabs:has(#tab-neutron:checked) #content-neutron {
+  display: block;
+}
+
+/* Tab-Inhalte Layout */
+.tab-content-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 1.5rem;
+}
+
+.tab-content-image {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.tab-content-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.tab-content-text {
+  flex: 1 1 50%;
+  text-align: left;
+}
+
+.tab-content-text h3 {
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.tab-content-text h4 {
+  color: var(--color-accent);
+  margin: 1.5rem 0 0.5rem;
+}
+
+.tab-content-text p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.tab-content-text ul,
+.tab-content-text ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.tab-content-text li {
+  margin-bottom: 0.5rem;
+}
+
+.tab-content-text table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.tab-content-text th,
+.tab-content-text td {
+  padding: 0.5rem;
+  border: 1px solid #333;
+  text-align: left;
+}
+
+.tab-content-text th {
+  background-color: #0d1b2a;
+}
+
+/* ---------- APOD (BILD DES TAGES) ---------- */
+.apod-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+  min-height: 600px;
+}
+
+.apod-title {
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.apod-media-container {
+  margin: 1rem 0;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.apod-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.apod-video {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  aspect-ratio: 16/9;
+  border: none;
+  border-radius: var(--border-radius);
+  background: #000;
+}
+
+.apod-description {
+  line-height: 1.6;
+  text-align: justify;
+  padding: 1rem;
+}
+
+.api-counter {
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.2);
+  text-align: right;
+  padding: 0.2rem;
+  position: fixed;
+  bottom: 2px;
+  right: 2px;
+  background: rgba(22, 33, 62, 0.1);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  opacity: 0.3;
+}
+
+.api-counter:hover {
+  color: var(--color-accent);
+  opacity: 1;
+  background: rgba(62, 22, 22, 0.8);
+  padding: 0.4rem;
+  font-size: 0.8rem;
+}
+
+/* ---------- KONTAKT ---------- */
+.contact-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.contact-info {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius);
+}
+
+.contact-info h1 {
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-info li {
+  margin: 0.5rem 0;
+}
+
+.contact-info a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #0088cc;
+  text-decoration: underline;
+}
+
+/* Kontaktformular */
+#contact-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#contact-form fieldset {
+  border: 1px solid var(--color-accent);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#contact-form legend {
+  color: var(--color-accent);
+  font-size: 1.2rem;
+  padding: 0 10px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group input[type='text'],
+.form-group input[type='email'],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: rgba(22, 33, 62, 0.8);
+  color: white;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group input[type='checkbox'] {
+  margin-right: 0.5rem;
+}
+
+.checkbox-group label {
+  margin-bottom: 0;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+#contact-form button {
+  background-color: var(--color-accent);
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+#contact-form button:hover {
+  background-color: #0088cc;
+  transform: translateY(-2px);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  margin-top: auto;
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+}
+
+.footer-links {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--color-accent);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: var(--transition-default);
+  background: rgba(11, 87, 125, 0.1);
+}
+
+.footer-links a:hover {
+  background: rgba(0, 170, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 170, 255, 0.2);
+}
+
+.disclaimer {
+  color: var(--color-footer-text);
+  font-size: 0.85rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ---------- UTILITY KLASSEN ---------- */
+.error-message {
+  color: #ff4444;
+  padding: 1rem;
+  text-align: center;
+  background: rgba(255, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media (max-width: 768px) {
+  /* Navigation */
+  .navbar {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links li {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Sterne Tabs */
+  .stars-tabs .tab-nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stars-tabs .tab-nav label {
+    width: 100%;
+    min-width: unset;
+    margin-bottom: 0.3rem;
+  }
+
+  /* Tab-Inhalte */
+  .tab-content-flex {
+    flex-direction: column;
+  }
+
+  .tab-content-image,
+  .tab-content-text {
+    flex: unset;
+    width: 100%;
+  }
+
+  /* Planet Container */
+  .planet-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .planet-image {
+    max-width: 100%;
+  }
+
+  /* Kontaktformular */
+  #contact-form fieldset {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-links {
+    flex-direction: column;
+  }
+}
+
+/* Spezieller Footer für die Sonnensystem-Seite */
+.solar-system + .general-footer {
+  background: linear-gradient(to top, transparent, rgba(0, 0, 0, 1));
+}

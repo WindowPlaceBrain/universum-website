@@ -3,47 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Kontaktiere uns für Fragen zur Astronomie oder dieser Website" />
     <title>Kontakt</title>
-    <link rel="stylesheet" href="styles.css" />
-
-    
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header>
-      <nav aria-label="breadcrumb">
-        <ol style="list-style: none; display: flex; padding: 0; margin: 0">
-          <li style="margin-right: 0.5rem">
-            <a href="index.html" style="color: #00aaff; text-decoration: none"
-              >Startseite</a
-            >
-          </li>
-          <li style="margin-right: 0.5rem">/</li>
-          <li style="color: #ffffff">Kontakt</li>
-        </ol>
-      </nav>
       <nav class="navbar">
         <div class="logo-container">
-          <div id="alien" class="logo" style="cursor: pointer">🛸 Kontaktaufnahme</div>
+          <div id="alien" class="logo">🛸 Kontaktaufnahme</div>
           <div class="hover-text">👽Sie haben mich gefunden!👽</div>
         </div>
         <ul class="nav-links">
           <li><a href="index.html">Startseite</a></li>
-          <!--Startseite-->
           <li><a href="sonnensystem.html">Sonnensystem</a></li>
-          <!--Infos über das Sonnensystem-->
           <li><a href="sterne.html">Sterne</a></li>
-          <!--Die verschiedenen Stadien, welche ein Stern durchläuft-->
           <li><a href="apod.html">Bild des Tages</a></li>
-          <!--NASA "Astronomy Picture" per API-->
-          <li><a href="kontakt.html">Kontakt</a></li>
-          <!--Kontaktseite für Fragen an den "Astro-Klub"-->
+          <li><a href="kontakt.html" class="active">Kontakt</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <div>
-        <section>
+      <div class="contact-container">
+        <section class="contact-info">
           <h1>Kontakt</h1>
           <p>Sie können mich über die folgenden Wege erreichen:</p>
           <ul>
@@ -51,105 +34,41 @@
             <li><a href="tel:+4131321234">Anrufen: 041 132 1234</a></li>
           </ul>
         </section>
-        <section>
+        <section class="contact-form-section">
           <form id="contact-form">
             <fieldset>
               <legend>Kontaktformular</legend>
-              <table>
-                <tr>
-                  <td><label for="name">Name:</label></td>
-                  <td>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      placeholder="Ihr vollständiger Name"
-                      required
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td><label for="email">E-Mail:</label></td>
-                  <td>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      placeholder="Ihre E-Mail-Adresse"
-                      required
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td><label for="subject">Betreff:</label></td>
-                  <td>
-                    <select id="subject" name="subject">
-                      <option value="frage">Frage</option>
-                      <option value="feedback">Feedback</option>
-                      <option value="zusammenarbeit">Zusammenarbeit</option>
-                      <option value="sonstiges">Sonstiges</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td><label for="message">Nachricht:</label></td>
-                  <td>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows="5"
-                      cols="40"
-                      placeholder="Ihre Nachricht hier eingeben"
-                      required
-                    ></textarea>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2">
-                    <label>
-                      <input
-                        type="checkbox"
-                        id="privacy"
-                        name="privacy"
-                        required
-                      />
-                      Ich stimme der Datenschutzerklärung zu
-                    </label>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="text-align: center">
-                    <button type="submit">Nachricht senden</button>
-                  </td>
-                </tr>
-              </table>
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Ihr vollständiger Name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" required />
+              </div>
+              <div class="form-group">
+                <label for="subject">Betreff:</label>
+                <select id="subject" name="subject">
+                  <option value="frage">Frage</option>
+                  <option value="feedback">Feedback</option>
+                  <option value="zusammenarbeit">Zusammenarbeit</option>
+                  <option value="sonstiges">Sonstiges</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Nachricht:</label>
+                <textarea id="message" name="message" rows="5" placeholder="Ihre Nachricht hier eingeben" required></textarea>
+              </div>
+              <div class="form-group checkbox-group">
+                <input type="checkbox" id="privacy" name="privacy" required />
+                <label for="privacy">Ich stimme der Datenschutzerklärung zu</label>
+              </div>
+              <div class="form-actions">
+                <button type="submit">Nachricht senden</button>
+              </div>
             </fieldset>
           </form>
         </section>
-        <script
-          type="text/javascript"
-          src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-        ></script>
-        <script>
-          (function () {
-            emailjs.init("9kfQFaNnA14waBRbR");
-          })();
-
-          document
-            .getElementById("contact-form")
-            .addEventListener("submit", function (event) {
-              event.preventDefault();
-
-              emailjs.sendForm("mein-blog", "template_2o39xom", this).then(
-                function () {
-                  alert("Nachricht erfolgreich gesendet!");
-                },
-                function (error) {
-                  alert("Fehler beim Senden der Nachricht: " + error.text);
-                }
-              );
-            });
-        </script>
       </div>
     </main>
     <footer class="general-footer">
@@ -158,5 +77,6 @@
         Keine Rechte vorbehalten.
       </p>
     </footer>
+    <script src="js/contact.js"></script>
   </body>
 </html>
